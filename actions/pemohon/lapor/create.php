@@ -1,6 +1,6 @@
 <?php
 
-$table = 'ahli_waris';
+$table = 'lapor';
 Page::set_title('Tambah '.ucwords($table));
 $error_msg = get_flash_msg('error');
 $old = get_flash_msg('old');
@@ -19,7 +19,7 @@ if(request() == 'POST')
         require '../actions/'.$table.'/after-insert.php';
 
     set_flash_msg(['success'=>$table.' berhasil ditambahkan']);
-    header('location:'.routeTo('pemohon/ahli-waris/index',['table'=>$table]));
+    header('location:'.routeTo('pemohon/lapor/index',['table'=>$table]));
 }
 
 return compact('table','error_msg','old');

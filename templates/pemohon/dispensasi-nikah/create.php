@@ -4,11 +4,11 @@
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Edit <?=_ucwords($table)?> : <?=$data->nama??''?></h2>
+                        <h2 class="text-white pb-2 fw-bold">Buat <?=_ucwords($table)?> Baru</h2>
                         <h5 class="text-white op-7 mb-2">Memanajemen data <?=_ucwords($table)?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="<?=routeTo('pemohon/ahli-waris/index',['table'=>$table])?>" class="btn btn-warning btn-round">Kembali</a>
+                    <a href="<?=routeTo('pemohon/dispensasi-nikah/index',['table'=>$table])?>" class="btn btn-warning btn-round">Kembali</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                                 ?>
                                 <div class="form-group">
                                     <label for=""><?=$label?></label>
-                                    <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??$data->{$field}]) ?>
+                                    <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                                 </div>
                                 <?php endforeach ?>
                                 <div class="form-group">

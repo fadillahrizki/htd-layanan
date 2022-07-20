@@ -8,7 +8,7 @@
                         <h5 class="text-white op-7 mb-2">Memanajemen fitur - fitur yang dapat di akses oleh peran tertentu untuk setiap pengguna</h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="<?=routeTo('pemohon/ahli-waris/create')?>" class="btn btn-warning btn-round">Kembali</a>
+                        <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/create')?>" class="btn btn-warning btn-round">Kembali</a>
                     </div>
                 </div>
             </div>

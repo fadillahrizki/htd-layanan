@@ -1,6 +1,6 @@
 <?php
 
-$table = 'ahli_waris';
+$table = 'lapor';
 Page::set_title('Edit '.ucwords($table));
 $conn = conn();
 $db   = new Database($conn);
@@ -24,7 +24,7 @@ if(request() == 'POST')
         require '../actions/'.$table.'/after-edit.php';
 
     set_flash_msg(['success'=>$table.' berhasil diupdate']);
-    header('location:'.routeTo('pemohon/ahli-waris/index',['table'=>$table]));
+    header('location:'.routeTo('pemohon/lapor/index',['table'=>$table]));
 }
 
 return [

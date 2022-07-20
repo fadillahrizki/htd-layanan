@@ -1,6 +1,6 @@
 <?php
 
-$table = 'ahli_waris';
+$table = 'lapor';
 $conn = conn();
 $db   = new Database($conn);
 
@@ -15,5 +15,5 @@ if(file_exists('../actions/'.$table.'/after-delete.php'))
     require '../actions/'.$table.'/after-delete.php';
 
 set_flash_msg(['success'=>$table.' berhasil dihapus']);
-header('location:'.routeTo('pemohon/ahli-waris/index',['table'=>$table]));
+header('location:'.routeTo('pemohon/lapor/index',['table'=>$table]));
 die();

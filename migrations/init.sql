@@ -55,7 +55,7 @@ create table pemohon(
     saksi_1 varchar(100) DEFAULT NULL,
     saksi_2 varchar(100) DEFAULT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_user_pemohon_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT fk_pemohon_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 create table pewaris(
@@ -74,7 +74,7 @@ create table pewaris(
     no_surat_kematian varchar(100),
     tanggal_meninggal DATE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_pewaris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_pewaris_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table ahli_waris(
@@ -90,7 +90,7 @@ create table ahli_waris(
     desa varchar(100),
     kecamatan varchar(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_ahli_waris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_ahli_waris_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table berkas(
@@ -163,4 +163,38 @@ create table surat_keterangan_tidak_mampu(
     keperluan_surat varchar(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_surat_keterangan_tidak_mampu_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+);
+
+create table lapor(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
+    judul_laporan varchar(100),
+    isi_laporan TEXT,
+    tanggal_kejadian DATE,
+    lokasi_kejadian varchar(100),
+    desa varchar(100),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_lapor_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+);
+
+create table data_mempelai(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
+    nama_lengkap varchar(100),
+    kewarganegaraan varchar(100),
+    NIK varchar(100),
+    jenis_kelamin varchar(100),
+    agama varchar(100),
+    pekerjaan varchar(100),
+    dusun varchar(100),
+    desa varchar(100),
+    kecamatan varchar(100),
+    no_hp varchar(100),
+    no_kk varchar(100),
+    status_perkawinan varchar(100),
+    tempat_lahir varchar(100),
+    tanggal_lahir DATE,
+    alamat TEXT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_data_anak_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );

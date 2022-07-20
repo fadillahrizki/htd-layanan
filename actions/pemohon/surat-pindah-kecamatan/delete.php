@@ -1,6 +1,6 @@
 <?php
 
-$table = 'ahli_waris';
+$table = 'surat_keterangan_pindah';
 $conn = conn();
 $db   = new Database($conn);
 
@@ -15,5 +15,5 @@ if(file_exists('../actions/'.$table.'/after-delete.php'))
     require '../actions/'.$table.'/after-delete.php';
 
 set_flash_msg(['success'=>$table.' berhasil dihapus']);
-header('location:'.routeTo('pemohon/ahli-waris/index',['table'=>$table]));
+header('location:'.routeTo('pemohon/surat-pindah-kecamatan/index',['table'=>$table]));
 die();
