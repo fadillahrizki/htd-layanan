@@ -1,6 +1,6 @@
 <?php
 
-$table = 'surat_keterangan_pindah';
+$table = 'surat_pindah_kecamatan';
 Page::set_title('Edit '.ucwords($table));
 $conn = conn();
 $db   = new Database($conn);

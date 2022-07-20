@@ -55,17 +55,7 @@ return [
         'saksi_1',
         'saksi_2',
     ],
-    'surat_keterangan_pindah' => [
-        'pemohon_id' => [
-            'label' => 'Pemohon',
-            'type' => 'options-obj:pemohon,id,nama_lengkap',
-        ],
-        'alamat_tujuan',
-        'dusun_tujuan',
-        'desa_tujuan',
-        'kecamatan_tujuan',
-    ],
-    'surat_keterangan_pindah' => [
+    'surat_pindah_kecamatan' => [
         'pemohon_id' => [
             'label' => 'Pemohon',
             'type' => 'options-obj:pemohon,id,nama_lengkap',

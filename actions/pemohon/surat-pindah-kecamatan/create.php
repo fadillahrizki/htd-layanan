@@ -1,6 +1,6 @@
 <?php
 
-$table = 'surat_keterangan_pindah';
+$table = 'surat_pindah_kecamatan';
 Page::set_title('Tambah '.ucwords($table));
 $error_msg = get_flash_msg('error');
 $old = get_flash_msg('old');
