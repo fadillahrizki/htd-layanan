@@ -131,4 +131,52 @@ return [
         'lokasi_kejadian',
         'desa',
     ],
+    'surat_keterangan_bersih_diri' => [
+        'pemohon_id' => [
+            'label' => 'Pemohon',
+            'type' => 'options-obj:pemohon,id,nama_lengkap',
+        ],
+        'data_ayah_id' => [
+            'label' => 'Data Ayah',
+            'type' => 'options-obj:data_ayah,id,nama_lengkap',
+        ],
+        'data_ibu_id' => [
+            'label' => 'Data Ibu',
+            'type' => 'options-obj:data_ibu,id,nama_lengkap',
+        ],
+        'data_anak_id' => [
+            'label' => 'Data Anak',
+            'type' => 'options-obj:data_anak,id,nama_lengkap',
+        ],
+    ],
+    'dispensasi_nikah' => [
+        'pemohon_id' => [
+            'label' => 'Pemohon',
+            'type' => 'options-obj:pemohon,id,nama_lengkap',
+        ],
+        'data_mempelai_pria_id' => [
+            'label' => 'Data Mempelai Pria',
+            'type' => 'options-obj:data_mempelai,id,nama_lengkap',
+        ],
+        'data_mempelai_wanita_id' => [
+            'label' => 'Data Mempelai Wanita',
+            'type' => 'options-obj:data_mempelai,id,nama_lengkap',
+        ],
+        'data_ayah_mempelai_pria_id' => [
+            'label' => 'Data Ayah Mempelai Pria',
+            'type' => 'options-obj:data_ayah,id,nama_lengkap',
+        ],
+        'data_ibu_mempelai_pria_id' => [
+            'label' => 'Data Ibu Mempelai Pria',
+            'type' => 'options-obj:data_ibu,id,nama_lengkap',
+        ],
+        'data_ayah_mempelai_wanita_id' => [
+            'label' => 'Data Ayah Mempelai Wanita',
+            'type' => 'options-obj:data_ayah,id,nama_lengkap',
+        ],
+        'data_ibu_mempelai_wanita_id' => [
+            'label' => 'Data Ibu Mempelai Wanita',
+            'type' => 'options-obj:data_ibu,id,nama_lengkap',
+        ],
+    ],
 ];

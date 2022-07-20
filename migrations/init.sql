@@ -194,5 +194,38 @@ create table data_mempelai(
     tanggal_lahir DATE,
     alamat TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_data_anak_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_data_mempelai_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+);
+
+create table surat_keterangan_bersih_diri(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
+    data_ayah_id int NOT NULL,
+    data_ibu_id int NOT NULL,
+    data_anak_id int NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_surat_keterangan_bersih_diri_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE,
+    CONSTRAINT fk_surat_keterangan_bersih_diri_data_ayah_id FOREIGN KEY (data_ayah_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
+    CONSTRAINT fk_surat_keterangan_bersih_diri_data_ibu_id FOREIGN KEY (data_ibu_id) REFERENCES data_ibu(id) ON DELETE CASCADE,
+    CONSTRAINT fk_surat_keterangan_bersih_diri_data_anak_id FOREIGN KEY (data_anak_id) REFERENCES data_anak(id) ON DELETE CASCADE
+);
+
+
+create table dispensasi_nikah(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
+    data_mempelai_pria_id int NOT NULL,
+    data_mempelai_wanita_id int NOT NULL,
+    data_ayah_mempelai_pria_id int NOT NULL,
+    data_ibu_mempelai_pria_id int NOT NULL,
+    data_ayah_mempelai_wanita_id int NOT NULL,
+    data_ibu_mempelai_wanita_id int NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_dispensasi_nikah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_mempelai_pria_id FOREIGN KEY (data_mempelai_pria_id) REFERENCES data_mempelai(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_mempelai_wanita_id FOREIGN KEY (data_mempelai_wanita_id) REFERENCES data_mempelai(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_ayah_mempelai_pria_id FOREIGN KEY (data_ayah_mempelai_pria_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_ibu_mempelai_pria_id FOREIGN KEY (data_ibu_mempelai_pria_id) REFERENCES data_ibu(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_ayah_mempelai_wanita_id FOREIGN KEY (data_ayah_mempelai_wanita_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_ibu_mempelai_wanita_id FOREIGN KEY (data_ibu_mempelai_wanita_id) REFERENCES data_ibu(id) ON DELETE CASCADE
 );
