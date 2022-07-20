@@ -42,14 +42,18 @@ CREATE TABLE migrations (
 create table pemohon(
     id int AUTO_INCREMENT PRIMARY KEY,
     user_id int NOT NULL,
+    nama_layanan varchar(100),
     nama_lengkap varchar(100),
-    hubungan_keluarga varchar(100),
-    alamat TEXT,
-    dusun varchar(100),
-    desa varchar(100),
-    kecamatan varchar(100),
-    kode_pos varchar(100),
-    no_hp varchar(100),
+    hubungan_keluarga varchar(100) DEFAULT NULL,
+    alamat TEXT DEFAULT NULL,
+    dusun varchar(100) DEFAULT NULL,
+    desa varchar(100) DEFAULT NULL,
+    kecamatan varchar(100) DEFAULT NULL,
+    kode_pos varchar(100) DEFAULT NULL,
+    no_hp varchar(100) DEFAULT NULL,
+    tanggal_pernikahan varchar(100) DEFAULT NULL,
+    saksi_1 varchar(100) DEFAULT NULL,
+    saksi_2 varchar(100) DEFAULT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user_pemohon_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -95,7 +99,7 @@ create table berkas(
     tipe varchar(100),
     nama_file varchar(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_ahli_waris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_berkas_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table surat_keterangan_pindah(
@@ -106,7 +110,7 @@ create table surat_keterangan_pindah(
     desa_tujuan varchar(100),
     kecamatan_tujuan varchar(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_ahli_waris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_surat_keterangan_pindah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table data_ayah(
@@ -120,7 +124,7 @@ create table data_ayah(
     tanggal_lahir DATE,
     alamat TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_pewaris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_data_ayah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table data_ibu(
@@ -134,7 +138,7 @@ create table data_ibu(
     tanggal_lahir DATE,
     alamat TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_pewaris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_data_ibu_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table data_anak(
@@ -149,7 +153,7 @@ create table data_anak(
     tanggal_lahir DATE,
     alamat TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_pewaris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_data_anak_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table surat_keterangan_tidak_mampu(
@@ -158,5 +162,5 @@ create table surat_keterangan_tidak_mampu(
     no_surat varchar(100),
     keperluan_surat varchar(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_pemohon_ahli_waris_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    CONSTRAINT fk_surat_keterangan_tidak_mampu_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
