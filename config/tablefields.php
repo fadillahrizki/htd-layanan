@@ -122,13 +122,12 @@ return [
         'alamat',
     ],
     'lapor' => [
-        'pemohon_id' => [
-            'label' => 'Pemohon',
-            'type' => 'options-obj:pemohon,id,nama_lengkap',
-        ],
         'judul_laporan',
         'isi_laporan',
-        'tanggal_kejadian',
+        'tanggal_kejadian'=>[
+            'label'=>'Tanggal Kejadian',
+            'type'=>'date'
+        ],
         'lokasi_kejadian',
         'desa',
     ],

@@ -167,14 +167,12 @@ create table surat_keterangan_tidak_mampu(
 
 create table lapor(
     id int AUTO_INCREMENT PRIMARY KEY,
-    pemohon_id int NOT NULL,
     judul_laporan varchar(100),
     isi_laporan TEXT,
     tanggal_kejadian DATE,
     lokasi_kejadian varchar(100),
     desa varchar(100),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_lapor_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 create table data_mempelai(
