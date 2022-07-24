@@ -1,6 +1,6 @@
 <?php
 
-$table = 'surat_pindah_kecamatan';
+$table = 'surat_keterangan_pindah';
 $conn = conn();
 $db   = new Database($conn);
 

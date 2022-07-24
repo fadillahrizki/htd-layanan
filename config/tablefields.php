@@ -55,7 +55,7 @@ return [
         'saksi_1',
         'saksi_2',
     ],
-    'surat_pindah_kecamatan' => [
+    'surat_keterangan_pindah' => [
         'pemohon_id' => [
             'label' => 'Pemohon',
             'type' => 'options-obj:pemohon,id,nama_lengkap',
