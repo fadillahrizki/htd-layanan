@@ -13,6 +13,39 @@ if(request() == 'POST')
     if(file_exists('../actions/'.$table.'/before-insert.php'))
         require '../actions/'.$table.'/before-insert.php';
 
+    $pemohon = $db->insert('pemohon',$_POST['pemohon']);
+
+    $_POST[$table]['pemohon_id'] = $pemohon->id;
+    
+    $_POST['data_mempelai_pria']['pemohon_id'] = $pemohon->id;
+    $_POST['data_mempelai_wanita']['pemohon_id'] = $pemohon->id;
+
+    $_POST['data_ayah_mempelai_pria']['pemohon_id'] = $pemohon->id;
+    $_POST['data_ibu_mempelai_pria']['pemohon_id'] = $pemohon->id;
+
+    $_POST['data_ayah_mempelai_wanita']['pemohon_id'] = $pemohon->id;
+    $_POST['data_ibu_mempelai_wanita']['pemohon_id'] = $pemohon->id;
+    
+    $pria = $db->insert('data_mempelai',$_POST['data_mempelai_pria']);
+    $wanita = $db->insert('data_mempelai',$_POST['data_mempelai_wanita']);
+    
+    $ayah_pria = $db->insert('data_ayah',$_POST['data_ayah_mempelai_pria']);
+    $ibu_pria = $db->insert('data_ibu',$_POST['data_ibu_mempelai_pria']);
+    
+    $ayah_wanita = $db->insert('data_ayah',$_POST['data_ayah_mempelai_wanita']);
+    $ibu_wanita = $db->insert('data_ibu',$_POST['data_ibu_mempelai_wanita']);
+    
+    $_POST[$table]['pemohon_id'] = $pemohon->id;
+
+    $_POST[$table]['data_mempelai_pria_id'] = $pria->id;
+    $_POST[$table]['data_mempelai_wanita_id'] = $wanita->id;
+
+    $_POST[$table]['data_ayah_mempelai_pria_id'] = $ayah_pria->id;
+    $_POST[$table]['data_ibu_mempelai_pria_id'] = $ibu_pria->id;
+    
+    $_POST[$table]['data_ayah_mempelai_wanita_id'] = $ayah_wanita->id;
+    $_POST[$table]['data_ibu_mempelai_wanita_id'] = $ibu_wanita->id;
+
     $insert = $db->insert($table,$_POST[$table]);
 
     if(file_exists('../actions/'.$table.'/after-insert.php'))

@@ -12,7 +12,10 @@ return [
         'nama_lengkap',
         'hubungan_keluarga',
         'NIK',
-        'jenis_kelamin',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
         'agama',
         'alamat',
         'dusun',
@@ -26,16 +29,25 @@ return [
         ],
         'nama_lengkap',
         'NIK',
-        'jenis_kelamin',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
         'agama',
         'tempat_lahir',
-        'tanggal_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
         'alamat',
         'dusun',
         'desa',
         'kecamatan',
         'no_surat_kematian',
-        'tanggal_meninggal',
+        'tanggal_meninggal'=>[
+            'label'=>"Tanggal Meninggal",
+            'type'=>'date'
+        ],
     ],
     'pemohon' => [
         'user_id' => [
@@ -51,7 +63,10 @@ return [
         'kecamatan',
         'kode_pos',
         'no_hp',
-        'tanggal_pernikahan',
+        'tanggal_pernikahan'=>[
+            'label'=>"Tanggal Pernikahan",
+            'type'=>'date'
+        ],
         'saksi_1',
         'saksi_2',
     ],
@@ -91,7 +106,10 @@ return [
         'agama',
         'pekerjaan',
         'tempat_lahir',
-        'tanggal_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
         'alamat',
     ],
     'data_ibu' => [
@@ -104,7 +122,10 @@ return [
         'agama',
         'pekerjaan',
         'tempat_lahir',
-        'tanggal_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
         'alamat',
     ],
     'data_anak' => [
@@ -114,14 +135,24 @@ return [
         ],
         'nama_lengkap',
         'NIK',
-        'jenis_kelamin',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
         'agama',
         'pekerjaan',
         'tempat_lahir',
-        'tanggal_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
         'alamat',
     ],
     'lapor' => [
+        'pemohon_id' => [
+            'label' => 'Pemohon',
+            'type' => 'options-obj:pemohon,id,nama_lengkap',
+        ],
         'judul_laporan',
         'isi_laporan',
         'tanggal_kejadian'=>[
@@ -148,6 +179,33 @@ return [
             'label' => 'Data Anak',
             'type' => 'options-obj:data_anak,id,nama_lengkap',
         ],
+    ],
+    'data_mempelai'=>[
+        'pemohon_id' => [
+            'label' => 'Pemohon',
+            'type' => 'options-obj:pemohon,id,nama_lengkap',
+        ],
+        'nama_lengkap',
+        'kewarganegaraan',
+        'NIK',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
+        'agama',
+        'pekerjaan',
+        'dusun',
+        'desa',
+        'kecamatan',
+        'no_hp',
+        'no_kk',
+        'status_perkawinan',
+        'tempat_lahir',
+        'tanggal_lahir'=>[
+            'label'=>'Tanggal Lahir',
+            'type'=>'date'
+        ],
+        'alamat',
     ],
     'dispensasi_nikah' => [
         'pemohon_id' => [

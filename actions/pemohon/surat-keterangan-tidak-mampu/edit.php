@@ -11,10 +11,18 @@ $data = $db->single($table,[
     'id' => $_GET['id']
 ]);
 
+$pemohon = $db->single('pemohon',[
+    'id' => $data->pemohon_id
+]);
+
 if(request() == 'POST')
 {
     if(file_exists('../actions/'.$table.'/before-edit.php'))
         require '../actions/'.$table.'/before-edit.php';
+
+    $pemohon = $db->update('pemohon',$_POST['pemohon'],[
+        'id'=>$pemohon->id
+    ]);
 
     $edit = $db->update($table,$_POST[$table],[
         'id' => $_GET['id']
@@ -29,6 +37,7 @@ if(request() == 'POST')
 
 return [
     'data' => $data,
+    'pemohon' => $pemohon,
     'error_msg' => $error_msg,
     'old' => $old,
     'table' => $table

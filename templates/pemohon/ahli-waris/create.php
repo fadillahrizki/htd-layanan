@@ -42,7 +42,7 @@
                                 ?>
                                 <div class="form-group">
                                     <label for=""><?=$label?></label>
-                                    <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
+                                    <?= Form::input($type, "pemohon[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                                 </div>
                                 <?php endforeach ?>
                         </div>
@@ -71,7 +71,7 @@
                             ?>
                             <div class="form-group">
                                 <label for=""><?=$label?></label>
-                                <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
+                                <?= Form::input($type, "pewaris[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                             </div>
                             <?php endforeach ?>
                         </div>
@@ -83,7 +83,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4>Ahli Waris</h4>
-                                    <button type="button" class="btn btn-success" onclick="addAhliWaris()">Tambah</button>
+                                    <!-- <button type="button" class="btn btn-success" onclick="addAhliWaris()">Tambah</button> -->
                                 </div>
                                 
                                 <div id="ahli-waris">
@@ -111,7 +111,7 @@
                                         ?>
                                         <div class="form-group">
                                             <label for=""><?=$label?></label>
-                                            <?= Form::input($type, $table."[0][".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
+                                            <?= Form::input($type, $table."[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                                         </div>
                                         <?php endforeach ?>
                                     </div>

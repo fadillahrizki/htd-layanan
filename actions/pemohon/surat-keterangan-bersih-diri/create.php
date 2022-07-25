@@ -13,6 +13,21 @@ if(request() == 'POST')
     if(file_exists('../actions/'.$table.'/before-insert.php'))
         require '../actions/'.$table.'/before-insert.php';
 
+    $pemohon = $db->insert('pemohon',$_POST['pemohon']);
+
+    $_POST['data_ayah']['pemohon_id'] = $pemohon->id;
+    $_POST['data_ibu']['pemohon_id'] = $pemohon->id;
+    $_POST['data_anak']['pemohon_id'] = $pemohon->id;
+    
+    $ayah = $db->insert('data_ayah',$_POST['data_ayah']);
+    $ibu = $db->insert('data_ibu',$_POST['data_ibu']);
+    $anak = $db->insert('data_anak',$_POST['data_anak']);
+    
+    $_POST[$table]['pemohon_id'] = $pemohon->id;
+    $_POST[$table]['data_ayah_id'] = $ayah->id;
+    $_POST[$table]['data_ibu_id'] = $ibu->id;
+    $_POST[$table]['data_anak_id'] = $anak->id;
+
     $insert = $db->insert($table,$_POST[$table]);
 
     if(file_exists('../actions/'.$table.'/after-insert.php'))

@@ -42,7 +42,7 @@
                             ?>
                             <div class="form-group">
                                 <label for=""><?=$label?></label>
-                                <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
+                                <?= Form::input($type, "pemohon[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                             </div>
                             <?php endforeach ?>
                         </div>

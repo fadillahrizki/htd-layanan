@@ -41,7 +41,7 @@ CREATE TABLE migrations (
 
 create table pemohon(
     id int AUTO_INCREMENT PRIMARY KEY,
-    user_id int NOT NULL,
+    user_id int DEFAULT NULL,
     nama_layanan varchar(100),
     nama_lengkap varchar(100),
     hubungan_keluarga varchar(100) DEFAULT NULL,
@@ -167,12 +167,14 @@ create table surat_keterangan_tidak_mampu(
 
 create table lapor(
     id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
     judul_laporan varchar(100),
     isi_laporan TEXT,
     tanggal_kejadian DATE,
     lokasi_kejadian varchar(100),
     desa varchar(100),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_lapor_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
 
 create table data_mempelai(

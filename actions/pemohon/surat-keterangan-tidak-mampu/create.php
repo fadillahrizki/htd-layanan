@@ -13,6 +13,10 @@ if(request() == 'POST')
     if(file_exists('../actions/'.$table.'/before-insert.php'))
         require '../actions/'.$table.'/before-insert.php';
 
+    $pemohon = $db->insert('pemohon',$_POST['pemohon']);
+
+    $_POST[$table]['pemohon_id'] = $pemohon->id;
+
     $insert = $db->insert($table,$_POST[$table]);
 
     if(file_exists('../actions/'.$table.'/after-insert.php'))
