@@ -13,14 +13,65 @@ if(request() == 'POST')
     if(file_exists('../actions/'.$table.'/before-insert.php'))
         require '../actions/'.$table.'/before-insert.php';
 
-    $pemohon = $db->insert('pemohon',$_POST['pemohon']);
-    
-    $_POST[$table]['pemohon_id'] = $pemohon->id;
-    $_POST['pewaris']['pemohon_id'] = $pemohon->id;
-    
-    $pewaris = $db->insert('pewaris',$_POST['pewaris']);
-    $insert = $db->insert($table,$_POST[$table]);
+    $surat_pernyataan_ahli_waris = $_FILES['surat_pernyataan_ahli_waris'];
+    $surat_kuasa_ahli_waris = $_FILES['surat_kuasa_ahli_waris'];
+    $surat_kematian_dari_desa = $_FILES['surat_kematian_dari_desa'];
+    $kk_pewaris = $_FILES['kk_pewaris'];
+    $ktp_ahli_waris = $_FILES['ktp_ahli_waris'];
 
+    $target_dir = "uploads/ahli-waris/";
+
+    $target_file_sp = $target_dir . time() . "-SPAW-" . basename($surat_pernyataan_ahli_waris["name"]);
+    $target_file_sk = $target_dir . time() . "-SKAW-" . basename($surat_kuasa_ahli_waris["name"]);
+    $target_file_skdd = $target_dir . time() . "-SKDD-" . basename($surat_kematian_dari_desa["name"]);
+    $target_file_kk = $target_dir . time() . "-KKP-" . basename($kk_pewaris["name"]);
+    $target_file_ktp = $target_dir . time() . "-KTPAW-" . basename($ktp_ahli_waris["name"]);
+
+    if(
+        move_uploaded_file($surat_pernyataan_ahli_waris["tmp_name"], $target_file_sp) &&
+        move_uploaded_file($surat_kuasa_ahli_waris["tmp_name"], $target_file_sk) &&
+        move_uploaded_file($surat_kematian_dari_desa["tmp_name"], $target_file_skdd) &&
+        move_uploaded_file($kk_pewaris["tmp_name"], $target_file_kk) &&
+        move_uploaded_file($ktp_ahli_waris["tmp_name"], $target_file_ktp)
+    ){
+
+        $pemohon = $db->insert('pemohon',$_POST['pemohon']);
+
+        $_POST[$table]['pemohon_id'] = $pemohon->id;
+
+        $_POST['surat_pernyataan_ahli_waris']['pemohon_id'] = $pemohon->id;
+        $_POST['surat_pernyataan_ahli_waris']['tipe'] = "SURAT PERNYATAAN AHLI WARIS";
+        $_POST['surat_pernyataan_ahli_waris']['nama_file'] = $target_file_sp;
+        
+        $_POST['surat_kuasa_ahli_waris']['pemohon_id'] = $pemohon->id;
+        $_POST['surat_kuasa_ahli_waris']['tipe'] = "SURAT KUASA AHLI WARIS";
+        $_POST['surat_kuasa_ahli_waris']['nama_file'] = $target_file_sk;
+
+        $_POST['surat_kematian_dari_desa']['pemohon_id'] = $pemohon->id;
+        $_POST['surat_kematian_dari_desa']['tipe'] = "SURAT KEMATIAN DARI DESA";
+        $_POST['surat_kematian_dari_desa']['nama_file'] = $target_file_skdd;
+
+        $_POST['kk_pewaris']['pemohon_id'] = $pemohon->id;
+        $_POST['kk_pewaris']['tipe'] = "KK PEWARIS";
+        $_POST['kk_pewaris']['nama_file'] = $target_file_kk;
+
+        $_POST['ktp_ahli_waris']['pemohon_id'] = $pemohon->id;
+        $_POST['ktp_ahli_waris']['tipe'] = "KTP AHLI WARIS";
+        $_POST['ktp_ahli_waris']['nama_file'] = $ktp_ahli_waris;
+
+        $db->insert('berkas',$_POST['surat_pernyataan_ahli_waris']);
+        $db->insert('berkas',$_POST['surat_kuasa_ahli_waris']);
+        $db->insert('berkas',$_POST['surat_kematian_dari_desa']);
+        $db->insert('berkas',$_POST['kk_pewaris']);
+        $db->insert('berkas',$_POST['ktp_ahli_waris']);
+
+        $_POST['pewaris']['pemohon_id'] = $pemohon->id;
+    
+        $pewaris = $db->insert('pewaris',$_POST['pewaris']);
+
+        $insert = $db->insert($table,$_POST[$table]);
+    }
+    
     if(file_exists('../actions/'.$table.'/after-insert.php'))
         require '../actions/'.$table.'/after-insert.php';
 

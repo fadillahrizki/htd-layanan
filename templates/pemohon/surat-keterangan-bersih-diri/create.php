@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="page-inner mt--5">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="row row-card-no-pd">
                     <div class="col-12">
                         <div class="card card-body">
@@ -135,6 +135,27 @@
                                 <?= Form::input($type, "data_anak[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??'']) ?>
                             </div>
                             <?php endforeach ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-card-no-pd">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Berkas Persyaratan</h4>
+                               <div class="form-group">
+                                    <label for="">KTP</label>
+                                    <input type="file" name="KTP" class="form-control" required>
+                                </div>
+                               <div class="form-group">
+                                    <label for="">KK</label>
+                                    <input type="file" name="KK" class="form-control" required>
+                                </div>
+                               <div class="form-group">
+                                    <label for="">Surat Pengantar dari Desa</label>
+                                    <input type="file" name="surat_pengantar_dari_desa" class="form-control" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

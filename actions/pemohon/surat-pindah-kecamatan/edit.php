@@ -28,6 +28,62 @@ if(request() == 'POST')
         'id' => $_GET['id']
     ]);
 
+    $target_dir = "uploads/surat-pindah-kecamatan/";
+
+    if($_FILES['KTP']['size'] > 0){
+
+        $ktp_db = $db->single('berkas',[
+            'pemohon_id' => $data->pemohon_id,
+            'tipe'=>'KTP'
+        ]);
+
+        $KTP = $_FILES['KTP'];
+        $target_file_ktp = $target_dir . time() . "-KTP-" . basename($KTP["name"]);
+        move_uploaded_file($KTP["tmp_name"], $target_file_ktp);
+
+        $_POST['KTP']['nama_file'] = $target_file_ktp;
+
+        $db->update('berkas',$_POST['KTP'],[
+            'id'=>$ktp_db->id
+        ]);
+    }
+
+    if($_FILES['KK']['size'] > 0){
+
+        $kk_db = $db->single('berkas',[
+            'pemohon_id' => $data->pemohon_id,
+            'tipe'=>'KK'
+        ]);
+
+        $KK = $_FILES['KK'];
+        $target_file_KK = $target_dir . time() . "-KK-" . basename($KK["name"]);
+        move_uploaded_file($KK["tmp_name"], $target_file_KK);
+        
+        $_POST['KK']['nama_file'] = $target_file_KK;
+
+        $db->update('berkas',$_POST['KK'],[
+            'id'=>$kk_db->id
+        ]);
+    }
+    
+    if($_FILES['surat_pengantar_dari_desa']['size'] > 0){
+
+        $spdd_db = $db->single('berkas',[
+            'pemohon_id' => $data->pemohon_id,
+            'tipe'=>'SURAT PENGANTAR DARI DESA'
+        ]);
+
+        $surat_pengantar_dari_desa = $_FILES['surat_pengantar_dari_desa'];
+        $target_file_surat_pengantar_dari_desa = $target_dir . time() . "-SP-" . basename($surat_pengantar_dari_desa["name"]);
+        move_uploaded_file($surat_pengantar_dari_desa["tmp_name"], $target_file_surat_pengantar_dari_desa);
+        
+        $_POST['SURAT PENGANTAR DARI DESA']['nama_file'] = $target_file_surat_pengantar_dari_desa;
+
+        $db->update('berkas',$_POST['SURAT PENGANTAR DARI DESA'],[
+            'id'=>$spdd_db->id
+        ]);
+    }
+
     if(file_exists('../actions/'.$table.'/after-edit.php'))
         require '../actions/'.$table.'/after-edit.php';
 
