@@ -19,6 +19,10 @@ $pewaris = $db->single('pewaris',[
     'pemohon_id' => $pemohon->id
 ]);
 
+$user_pemohon = $db->single('pemohon',[
+    'user_id'=>auth()->user->id
+]);
+
 if(request() == 'POST')
 {
     if(file_exists('../actions/'.$table.'/before-edit.php'))
@@ -137,6 +141,7 @@ if(request() == 'POST')
 
 return [
     'data' => $data,
+    'user_pemohon' => $user_pemohon,
     'pemohon' => $pemohon,
     'pewaris' => $pewaris,
     'error_msg' => $error_msg,

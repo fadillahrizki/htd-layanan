@@ -39,6 +39,11 @@ $ibu_wanita = $db->single('data_ibu',[
     'id' => $data->data_ibu_mempelai_wanita_id
 ]);
 
+$user_pemohon = $db->single('pemohon',[
+    'user_id'=>auth()->user->id
+]);
+
+
 if(request() == 'POST')
 {
     if(file_exists('../actions/'.$table.'/before-edit.php'))
@@ -263,6 +268,7 @@ if(request() == 'POST')
 
 return [
     'data' => $data,
+    'user_pemohon' => $user_pemohon,
     'pria' => $pria,
     'wanita' => $wanita,
     'ayah_pria' => $ayah_pria,

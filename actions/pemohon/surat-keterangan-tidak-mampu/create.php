@@ -5,10 +5,16 @@ Page::set_title('Tambah '.ucwords($table));
 $error_msg = get_flash_msg('error');
 $old = get_flash_msg('old');
 
+$conn = conn();
+$db   = new Database($conn);
+
+$user_pemohon = $db->single('pemohon',[
+    'user_id'=>auth()->user->id
+]);
+
+
 if(request() == 'POST')
 {
-    $conn = conn();
-    $db   = new Database($conn);
 
     if(file_exists('../actions/'.$table.'/before-insert.php'))
         require '../actions/'.$table.'/before-insert.php';
@@ -66,4 +72,4 @@ if(request() == 'POST')
     header('location:'.routeTo('pemohon/surat-keterangan-tidak-mampu/index',['table'=>$table]));
 }
 
-return compact('table','error_msg','old');
+return compact('user_pemohon','table','error_msg','old');
