@@ -7,6 +7,10 @@ $data = $db->single('users',[
     'id' => auth()->user->id
 ]);
 
+$pemohon = $db->single('pemohon',[
+    'user_id' => auth()->user->id
+]);
+
 $success_msg = get_flash_msg('success');
 
 if(request() == 'POST')
@@ -19,8 +23,17 @@ if(request() == 'POST')
         'id' => auth()->user->id
     ]);
 
+    if($pemohon){
+        $db->update('pemohon',$_POST['pemohon'],[
+            'id'=>$pemohon->id
+        ]);
+    }else{
+        $_POST['pemohon']['user_id'] = auth()->user->id;
+        $db->insert('pemohon',$_POST['pemohon']);
+    }
+
     set_flash_msg(['success'=>'Profil berhasil diupdate']);
-    header('location:index.php?r=default/profile');
+    header('location:'.routeTo('default/profile'));
 }
 
-return compact('data','success_msg');
+return compact('data','pemohon','success_msg');
