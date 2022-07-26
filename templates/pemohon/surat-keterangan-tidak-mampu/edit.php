@@ -8,6 +8,7 @@
                         <h5 class="text-white op-7 mb-2">Memanajemen data <?=_ucwords($table)?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
+                        <button class="btn btn-success mr-2 btn-round" onclick="printContent()">Cetak</button>
                         <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/index',['table'=>$table])?>" class="btn btn-warning btn-round">Kembali</a>
                     </div>
                 </div>
@@ -15,7 +16,7 @@
         </div>
         <div class="page-inner mt--5">
             <form action="" method="post" enctype="multipart/form-data">
-                <div class="row row-card-no-pd">
+                <div class="row row-card-no-pd print">
                     <div class="col-12">
                         <div class="card card-body">
                             <?php if($error_msg): ?>
@@ -54,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-card-no-pd">
+                <div class="row row-card-no-pd print">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -147,5 +148,23 @@
         kecamatan.value = user_pemohon.kecamatan
         kode_pos.value = user_pemohon.kode_pos
         no_hp.value = user_pemohon.no_hp
+    }
+    function printContent(){
+        var win = window.open('','','left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status =0');
+        var content = `<html>
+                        <head>
+                            <link rel="stylesheet" href="<?=asset('assets/css/bootstrap.min.css')?>">
+                            <link rel="stylesheet" href="<?=asset('assets/css/atlantis.min.css')?>">
+                        </head>`
+        content += "<body onload=\"window.print(); window.close();\">";
+
+        var contents = document.querySelectorAll(".print")
+        contents.forEach(ctn=>{
+            content += ctn.innerHTML ;
+        })
+        content += "</body>";
+        content += "</html>";
+        win.document.write(content);
+        win.document.close();
     }
 </script>
