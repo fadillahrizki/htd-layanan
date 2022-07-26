@@ -37,6 +37,7 @@
                                             ?>
                                             <th><?=$label?></th>
                                             <?php endforeach ?>
+                                            <th>Status</th>
                                             <th class="text-right">
                                             </th>
                                         </tr>
@@ -64,7 +65,11 @@
                                             ?>
                                             <td><?=$data_value?></td>
                                             <?php endforeach ?>
+                                            <td><?=$data->status?></td>
                                             <td>
+                                                <?php if($data->status == "pengajuan"):?>
+                                                <a href="<?=routeTo('pemohon/dispensasi-nikah/verify',['id'=>$data->id])?>" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Verifikasi</a>
+                                                <?php endif ?>
                                                 <a href="<?=routeTo('pemohon/dispensasi-nikah/edit',['id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
                                                 <a href="<?=routeTo('pemohon/dispensasi-nikah/delete',['id'=>$data->id])?>" onclick="if(confirm('apakah anda yakin akan menghapus data ini ?')){return true}else{return false}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
                                             </td>

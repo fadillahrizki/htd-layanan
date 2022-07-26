@@ -89,6 +89,7 @@ create table ahli_waris(
     dusun varchar(100),
     desa varchar(100),
     kecamatan varchar(100),
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_ahli_waris_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
@@ -109,6 +110,7 @@ create table surat_keterangan_pindah(
     dusun_tujuan varchar(100),
     desa_tujuan varchar(100),
     kecamatan_tujuan varchar(100),
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_surat_keterangan_pindah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
@@ -161,6 +163,7 @@ create table surat_keterangan_tidak_mampu(
     pemohon_id int NOT NULL,
     no_surat varchar(100),
     keperluan_surat varchar(100),
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_surat_keterangan_tidak_mampu_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
@@ -173,6 +176,7 @@ create table lapor(
     tanggal_kejadian DATE,
     lokasi_kejadian varchar(100),
     desa varchar(100),
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_lapor_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
 );
@@ -205,6 +209,7 @@ create table surat_keterangan_bersih_diri(
     data_ayah_id int NOT NULL,
     data_ibu_id int NOT NULL,
     data_anak_id int NOT NULL,
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_surat_keterangan_bersih_diri_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE,
     CONSTRAINT fk_surat_keterangan_bersih_diri_data_ayah_id FOREIGN KEY (data_ayah_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
@@ -222,6 +227,7 @@ create table dispensasi_nikah(
     data_ibu_mempelai_pria_id int NOT NULL,
     data_ayah_mempelai_wanita_id int NOT NULL,
     data_ibu_mempelai_wanita_id int NOT NULL,
+    status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_dispensasi_nikah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE,
     CONSTRAINT fk_dispensasi_nikah_data_mempelai_pria_id FOREIGN KEY (data_mempelai_pria_id) REFERENCES data_mempelai(id) ON DELETE CASCADE,
