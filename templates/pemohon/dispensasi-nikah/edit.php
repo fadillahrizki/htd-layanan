@@ -75,12 +75,15 @@
                                 if($label == "Pemohon"){
                                     continue;
                                 }
+                                if($label == "Jenis Kelamin"):
                             ?>
+                            <?= Form::input('hidden', "data_mempelai_pria[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>'Laki-Laki']) ?>
+                            <?php else: ?>
                             <div class="form-group">
                                 <label for=""><?=$label?></label>
                                 <?= Form::input($type, "data_mempelai_pria[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??$pria->{$field}]) ?>
                             </div>
-                            <?php endforeach ?>
+                            <?php endif; endforeach ?>
                         </div>
                     </div>
                 </div>
@@ -105,12 +108,15 @@
                                 if($label == "Pemohon"){
                                     continue;
                                 }
+                                if($label == "Jenis Kelamin"):
                             ?>
+                            <?= Form::input('hidden', "data_mempelai_wanita[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>'Perempuan']) ?>
+                            <?php else: ?>
                             <div class="form-group">
                                 <label for=""><?=$label?></label>
                                 <?= Form::input($type, "data_mempelai_wanita[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??$wanita->{$field}]) ?>
                             </div>
-                            <?php endforeach ?>
+                            <?php endif; endforeach ?>
                         </div>
                     </div>
                 </div>
@@ -231,6 +237,78 @@
                                 <?= Form::input($type, "data_ibu_mempelai_wanita[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??$ibu_wanita->{$field}]) ?>
                             </div>
                             <?php endforeach ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-card-no-pd">
+                    <div class="col-12">
+                        <div class="card card-body">
+
+                            <h4>Data Kematian Suami</h4>
+                            <?php 
+                            foreach(config('fields')['data_kematian'] as $key => $field): 
+                                $label = $field;
+                                $type  = "text";
+                                if(is_array($field))
+                                {
+                                    $field_data = $field;
+                                    $field = $key;
+                                    $label = $field_data['label'];
+                                    if(isset($field_data['type']))
+                                    $type  = $field_data['type'];
+                                }
+                                $label = _ucwords($label);
+                                if($label == "Pemohon"){
+                                    continue;
+                                }
+
+                                if($label == "Jenis Kelamin"):
+
+                            ?>
+
+                            <?= Form::input('hidden', "data_kematian_suami[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>'Laki-Laki']) ?>
+
+                            <?php else: ?>
+                            <div class="form-group">
+                                <label for=""><?=$label?></label>
+                                <?= Form::input($type, "data_kematian_suami[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]?? ($kematian_suami ? $kematian_suami->{$field} : "")]) ?>
+                            </div>
+                            <?php endif ; endforeach ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-card-no-pd">
+                    <div class="col-12">
+                        <div class="card card-body">
+
+                            <h4>Data Kematian Istri</h4>
+                            <?php 
+                            foreach(config('fields')['data_kematian'] as $key => $field): 
+                                $label = $field;
+                                $type  = "text";
+                                if(is_array($field))
+                                {
+                                    $field_data = $field;
+                                    $field = $key;
+                                    $label = $field_data['label'];
+                                    if(isset($field_data['type']))
+                                    $type  = $field_data['type'];
+                                }
+                                $label = _ucwords($label);
+                                if($label == "Pemohon"){
+                                    continue;
+                                }
+
+                                if($label == "Jenis Kelamin"):
+                            ?>
+                             <?= Form::input('hidden', "data_kematian_istri[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>'Perempuan']) ?>
+
+                            <?php else: ?>
+                            <div class="form-group">
+                                <label for=""><?=$label?></label>
+                                <?= Form::input($type, "data_kematian_istri[".$field."]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]??($kematian_istri ? $kematian_istri->{$field} : "")]) ?>
+                            </div>
+                            <?php endif; endforeach ?>
                         </div>
                     </div>
                 </div>

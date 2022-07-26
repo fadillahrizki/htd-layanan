@@ -54,7 +54,7 @@
                                                 if(is_array($field))
                                                 {
                                                     $label = $field['label'];
-                                                    $data_value = Form::getData($field['type'],$data->{$key});
+                                                    $data_value = $data->{$key} ? Form::getData($field['type'],$data->{$key}) : "-";
                                                     $field = $key;
                                                 }
                                                 else

@@ -236,5 +236,33 @@ return [
             'label' => 'Data Ibu Mempelai Wanita',
             'type' => 'options-obj:data_ibu,id,nama_lengkap',
         ],
+        'data_kematian_suami_id' => [
+            'label' => 'Data Kematian Suami',
+            'type' => 'options-obj:data_kematian,id,nama',
+        ],
+        'data_kematian_istri_id' => [
+            'label' => 'Data Kematian Istri',
+            'type' => 'options-obj:data_kematian,id,nama',
+        ],
+    ],
+    'data_kematian'=>[
+        'pemohon_id' => [
+            'label' => 'Pemohon',
+            'type' => 'options-obj:pemohon,id,nama_lengkap',
+        ],
+        'nama',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
+        'tempat_lahir',
+        'tanggal_lahir'=>[
+            'label'=>'Tanggal Lahir',
+            'type'=>'date'
+        ],
+        'kewarganegaraan',
+        'agama',
+        'pekerjaan',
+        'tempat_tinggal_wafat'
     ],
 ];

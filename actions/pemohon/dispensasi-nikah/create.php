@@ -39,6 +39,18 @@ if(request() == 'POST')
     
     $ayah_wanita = $db->insert('data_ayah',$_POST['data_ayah_mempelai_wanita']);
     $ibu_wanita = $db->insert('data_ibu',$_POST['data_ibu_mempelai_wanita']);
+
+    if(isset($_POST['data_kematian_suami']['nama']) && $_POST['data_kematian_suami']['nama']){
+        $_POST['data_kematian_suami']['pemohon_id'] = $pemohon->id;
+        $kematian_suami = $db->insert('data_kematian',$_POST['data_kematian_suami']);
+        $_POST[$table]['data_kematian_suami_id'] = $kematian_suami->id;
+    }
+
+    if(isset($_POST['data_kematian_istri']['nama']) && $_POST['data_kematian_suami']['nama']){
+        $_POST['data_kematian_istri']['pemohon_id'] = $pemohon->id;
+        $kematian_istri = $db->insert('data_kematian',$_POST['data_kematian_istri']);
+        $_POST[$table]['data_kematian_istri_id'] = $kematian_istri->id;
+    }
     
     $_POST[$table]['pemohon_id'] = $pemohon->id;
 

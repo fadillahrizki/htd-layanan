@@ -39,6 +39,14 @@ $ibu_wanita = $db->single('data_ibu',[
     'id' => $data->data_ibu_mempelai_wanita_id
 ]);
 
+$kematian_suami = $db->single('data_kematian',[
+    'id' => $data->data_kematian_suami_id
+]);
+
+$kematian_istri = $db->single('data_kematian',[
+    'id' => $data->data_kematian_istri_id
+]);
+
 $user_pemohon = $db->single('pemohon',[
     'user_id'=>auth()->user->id
 ]);
@@ -71,8 +79,36 @@ if(request() == 'POST')
     $ayah_wanita = $db->update('data_ayah',$_POST['data_ayah_mempelai_wanita'],[
         'id'=>$ayah_wanita->id
     ]);
-    $ibu_wanita = $db->update('data_ibu',$_POST['data_ibu_mempelai_wanita'],[
+    $ibu_wanita = $db->update('data_ibu',$_POST['data_ibu_mempelai_wanita'],[   
         'id'=>$ibu_wanita->id
+    ]);
+
+    if(isset($_POST['data_kematian_suami']['nama']) && $_POST['data_kematian_suami']['nama']){
+        if($kematian_suami){
+            $kematian_suami = $db->update('data_kematian',$_POST['data_kematian_suami'],[
+                'id'=>$kematian_suami->id
+            ]);
+        }else{
+            $_POST['data_kematian_suami']['pemohon_id'] = $data->pemohon_id;
+            $kematian_suami = $db->insert('data_kematian',$_POST['data_kematian_suami']);
+            $_POST[$table]['data_kematian_suami_id'] = $kematian_suami->id;
+        }
+    }
+    
+    if(isset($_POST['data_kematian_istri']['nama']) && $_POST['data_kematian_istri']['nama']){
+        if($kematian_istri){
+            $kematian_istri = $db->update('data_kematian',$_POST['data_kematian_istri'],[
+                'id'=>$kematian_istri->id
+            ]);
+        }else{
+            $_POST['data_kematian_istri']['pemohon_id'] = $data->pemohon_id;
+            $kematian_istri = $db->insert('data_kematian',$_POST['data_kematian_istri']);
+            $_POST[$table]['data_kematian_istri_id'] = $kematian_istri->id;
+        }
+    }
+
+    $data = $db->update($table,$_POST[$table],[
+        'id' => $data->id
     ]);
 
     $target_dir = "uploads/dispensasi-nikah/";
@@ -275,6 +311,8 @@ return [
     'ibu_pria' => $ibu_pria,
     'ayah_wanita' => $ayah_wanita,
     'ibu_wanita' => $ibu_wanita,
+    'kematian_suami' => $kematian_suami,
+    'kematian_istri' => $kematian_istri,
     'pemohon' => $pemohon,
     'error_msg' => $error_msg,
     'old' => $old,

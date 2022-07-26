@@ -217,6 +217,19 @@ create table surat_keterangan_bersih_diri(
     CONSTRAINT fk_surat_keterangan_bersih_diri_data_anak_id FOREIGN KEY (data_anak_id) REFERENCES data_anak(id) ON DELETE CASCADE
 );
 
+create table data_kematian(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    pemohon_id int NOT NULL,
+    nama varchar(100),
+    jenis_kelamin varchar(100),
+    tempat_lahir varchar(100),
+    tanggal_lahir DATE,
+    kewarganegaraan varchar(100),
+    agama varchar(100),
+    pekerjaan varchar(100),
+    tempat_tinggal_wafat varchar(100),
+    CONSTRAINT fk_data_kematian_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE
+);
 
 create table dispensasi_nikah(
     id int AUTO_INCREMENT PRIMARY KEY,
@@ -227,6 +240,8 @@ create table dispensasi_nikah(
     data_ibu_mempelai_pria_id int NOT NULL,
     data_ayah_mempelai_wanita_id int NOT NULL,
     data_ibu_mempelai_wanita_id int NOT NULL,
+    data_kematian_suami_id int DEFAULT NULL,
+    data_kematian_istri_id int DEFAULT NULL,
     status varchar(100) DEFAULT "pengajuan",
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_dispensasi_nikah_pemohon_id FOREIGN KEY (pemohon_id) REFERENCES pemohon(id) ON DELETE CASCADE,
@@ -235,5 +250,7 @@ create table dispensasi_nikah(
     CONSTRAINT fk_dispensasi_nikah_data_ayah_mempelai_pria_id FOREIGN KEY (data_ayah_mempelai_pria_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
     CONSTRAINT fk_dispensasi_nikah_data_ibu_mempelai_pria_id FOREIGN KEY (data_ibu_mempelai_pria_id) REFERENCES data_ibu(id) ON DELETE CASCADE,
     CONSTRAINT fk_dispensasi_nikah_data_ayah_mempelai_wanita_id FOREIGN KEY (data_ayah_mempelai_wanita_id) REFERENCES data_ayah(id) ON DELETE CASCADE,
-    CONSTRAINT fk_dispensasi_nikah_data_ibu_mempelai_wanita_id FOREIGN KEY (data_ibu_mempelai_wanita_id) REFERENCES data_ibu(id) ON DELETE CASCADE
+    CONSTRAINT fk_dispensasi_nikah_data_ibu_mempelai_wanita_id FOREIGN KEY (data_ibu_mempelai_wanita_id) REFERENCES data_ibu(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_kematian_suami_id FOREIGN KEY (data_kematian_suami_id) REFERENCES data_kematian(id) ON DELETE CASCADE,
+    CONSTRAINT fk_dispensasi_nikah_data_kematian_istri_id FOREIGN KEY (data_kematian_istri_id) REFERENCES data_kematian(id) ON DELETE CASCADE
 );
