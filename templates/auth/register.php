@@ -51,7 +51,7 @@
                                 <input type="password" name="password" id="" class="form-control mb-2" placeholder="Kata Sandi Disini...">
                             </div>
                             <?php 
-                            foreach(config('fields')['pemohon'] as $key => $field): 
+                            foreach(config('fields')['profile'] as $key => $field): 
                                 $label = $field;
                                 $type  = "text";
                                 if(is_array($field))
@@ -63,13 +63,13 @@
                                     $type  = $field_data['type'];
                                 }
                                 $label = _ucwords($label);
-                                if($label == "User" || $label == "Hubungan Keluarga" || $label == "Nama Layanan" || $label == "Tanggal Pernikahan" || $label == "Saksi 1" || $label == "Saksi 2"){
+                                if($label == "User"){
                                     continue;
                                 }
                             ?>
                             <div class="form-group">
                                 <label for=""><?=$label?></label>
-                                <?= Form::input($type, "pemohon[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]?? '']) ?>
+                                <?= Form::input($type, "profile[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]?? '']) ?>
                             </div>
                             <?php endforeach ?>
                             <div class="form-group">

@@ -8,7 +8,7 @@ $old = get_flash_msg('old');
 $conn = conn();
 $db   = new Database($conn);
 
-$user_pemohon = $db->single('pemohon',[
+$user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 
@@ -40,6 +40,20 @@ if(request() == 'POST')
         move_uploaded_file($ktp_ahli_waris["tmp_name"], $target_file_ktp)
     ){
 
+        $user = auth()->user;
+        
+        $role = $db->single('user_roles',[
+            'user_id'=>$user->id
+        ]);
+        
+        $role = $db->single('roles',[
+            'id'=>$role->role_id
+        ]);
+
+        if($role->name == "pemohon"){
+            $_POST['pemohon']['user_id'] = auth()->user->id;
+        }
+        
         $pemohon = $db->insert('pemohon',$_POST['pemohon']);
 
         $_POST[$table]['pemohon_id'] = $pemohon->id;

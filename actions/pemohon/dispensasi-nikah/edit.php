@@ -47,7 +47,7 @@ $kematian_istri = $db->single('data_kematian',[
     'id' => $data->data_kematian_istri_id
 ]);
 
-$user_pemohon = $db->single('pemohon',[
+$user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 

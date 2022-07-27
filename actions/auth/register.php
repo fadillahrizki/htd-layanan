@@ -19,20 +19,20 @@ if(request() == 'POST')
     }
 
     $user = $db->insert('users',[
-        'name' => $_POST['pemohon']['nama_lengkap'],
+        'name' => $_POST['profile']['nama_lengkap'],
         'username' => $_POST['username'],
         'password' => md5($_POST['password']),
     ]);
 
-    $_POST['pemohon']['user_id'] = $user->id;
-    $pemohon = $db->insert('pemohon',$_POST['pemohon']);
+    $_POST['profile']['user_id'] = $user->id;
+    $profile = $db->insert('profile',$_POST['profile']);
     $role = $db->single('roles',['name'=>'pemohon']);
     $user_roles = $db->insert('user_roles',[
         'user_id'=>$user->id,
         'role_id'=>$role->id
     ]);
     
-    if($user && $pemohon && $user_roles)
+    if($user && $profile && $user_roles)
     {
         Session::set(['user_id'=>$user->id]);
         header('location:'.base_url());

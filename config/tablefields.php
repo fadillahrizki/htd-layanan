@@ -84,6 +84,33 @@ return [
         'saksi_1',
         'saksi_2',
     ],
+    'profile' => [
+        'user_id' => [
+            'label' => 'User',
+            'type' => 'options-obj:users,id,name',
+        ],
+        'nama_lengkap',
+        'email',
+        'NIK',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
+        'agama',
+        'tempat_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
+        'alamat',
+        'dusun',
+        'desa',
+        'kecamatan',
+        'kode_pos',
+        'no_hp',
+        'pekerjaan',
+        'status'
+    ],
     'surat_keterangan_pindah' => [
         'pemohon_id' => [
             'label' => 'Pemohon',

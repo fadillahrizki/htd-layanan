@@ -1,6 +1,6 @@
 <?php
 
-$table = 'lapor';
+$table = 'ahli_waris';
 $conn = conn();
 $db   = new Database($conn);
 

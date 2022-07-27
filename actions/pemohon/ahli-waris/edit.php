@@ -19,7 +19,7 @@ $pewaris = $db->single('pewaris',[
     'pemohon_id' => $pemohon->id
 ]);
 
-$user_pemohon = $db->single('pemohon',[
+$user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 

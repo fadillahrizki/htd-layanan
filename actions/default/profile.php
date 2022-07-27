@@ -7,7 +7,7 @@ $data = $db->single('users',[
     'id' => auth()->user->id
 ]);
 
-$pemohon = $db->single('pemohon',[
+$pemohon = $db->single('profile',[
     'user_id' => auth()->user->id
 ]);
 

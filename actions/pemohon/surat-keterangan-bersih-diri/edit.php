@@ -27,7 +27,7 @@ $anak = $db->single('data_anak',[
     'pemohon_id' => $data->pemohon_id
 ]);
 
-$user_pemohon = $db->single('pemohon',[
+$user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 

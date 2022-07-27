@@ -1,6 +1,6 @@
 <?php
 
-$table = 'lapor';
+$table = 'surat_keterangan_bersih_diri';
 $conn = conn();
 $db   = new Database($conn);
 
