@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Masuk</title>
+	<title>Daftar</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="<?= routeTo('assets/img/main-logo.gif')?>" type="image/x-icon"/>
 
@@ -38,17 +38,43 @@
                         <center>
                             <img src="<?=routeTo('assets/img/main-logo.gif')?>" width="150px" height="100px" alt="logo" style="object-fit:contain;">
                         </center>
-                        <div class="card-title text-center">Login Form</div>
-                        <div class="card-category text-center">Masukkan Username dan Password anda pada bidang di bawah ini.</div>
+                        <div class="card-title text-center">Register Form</div>
+                        <div class="card-category text-center">Masukkan data di bawah ini.</div>
 
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="">Nama Pengguna</label>
                                 <input type="text" name="username" id="" class="form-control mb-2" placeholder="Nama Pengguna Disini...">
+                            </div>
+                            <div class="form-group">
                                 <label for="">Kata Sandi</label>
                                 <input type="password" name="password" id="" class="form-control mb-2" placeholder="Kata Sandi Disini...">
-                                <button class="btn btn-primary btn-block btn-round">Masuk</button>
-                                <a href="<?=routeTo('auth/register')?>" class="btn btn-warning btn-block btn-round">Daftar</a>
+                            </div>
+                            <?php 
+                            foreach(config('fields')['pemohon'] as $key => $field): 
+                                $label = $field;
+                                $type  = "text";
+                                if(is_array($field))
+                                {
+                                    $field_data = $field;
+                                    $field = $key;
+                                    $label = $field_data['label'];
+                                    if(isset($field_data['type']))
+                                    $type  = $field_data['type'];
+                                }
+                                $label = _ucwords($label);
+                                if($label == "User" || $label == "Hubungan Keluarga" || $label == "Nama Layanan" || $label == "Tanggal Pernikahan" || $label == "Saksi 1" || $label == "Saksi 2"){
+                                    continue;
+                                }
+                            ?>
+                            <div class="form-group">
+                                <label for=""><?=$label?></label>
+                                <?= Form::input($type, "pemohon[$field]", ['class'=>"form-control","placeholder"=>$label,"value"=>$old[$field]?? '']) ?>
+                            </div>
+                            <?php endforeach ?>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block btn-round">Daftar</button>
+                                <a href="<?=routeTo('auth/login')?>" class="btn btn-warning btn-block btn-round">Masuk</a>
                             </div>
                         </form>
                     </div>

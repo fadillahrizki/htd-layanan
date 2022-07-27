@@ -57,12 +57,26 @@ return [
         'nama_layanan',
         'nama_lengkap',
         'hubungan_keluarga',
+        'email',
+        'NIK',
+        'jenis_kelamin'=>[
+            'label'=>"Jenis Kelamin",
+            'type'=>'options:Laki-Laki|Perempuan'
+        ],
+        'agama',
+        'tempat_lahir',
+        'tanggal_lahir'=>[
+            'label'=>"Tanggal Lahir",
+            'type'=>'date'
+        ],
         'alamat',
         'dusun',
         'desa',
         'kecamatan',
         'kode_pos',
         'no_hp',
+        'pekerjaan',
+        'status',
         'tanggal_pernikahan'=>[
             'label'=>"Tanggal Pernikahan",
             'type'=>'date'

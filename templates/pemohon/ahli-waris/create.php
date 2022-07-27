@@ -209,22 +209,36 @@ function asPemohon(){
     var user_pemohon = JSON.parse(JSON.stringify(<?=json_encode($user_pemohon)?>))
 
     var nama_lengkap = document.querySelector("input[name='pemohon[nama_lengkap]']")
-    var hubungan_keluarga = document.querySelector("input[name='pemohon[hubungan_keluarga]']")
     var alamat = document.querySelector("input[name='pemohon[alamat]']")
     var dusun = document.querySelector("input[name='pemohon[dusun]']")
     var desa = document.querySelector("input[name='pemohon[desa]']")
     var kecamatan = document.querySelector("input[name='pemohon[kecamatan]']")
     var kode_pos = document.querySelector("input[name='pemohon[kode_pos]']")
     var no_hp = document.querySelector("input[name='pemohon[no_hp]']")
+    var email = document.querySelector("input[name='pemohon[email]']")
+    var NIK = document.querySelector("input[name='pemohon[NIK]']")
+    var jenis_kelamin = document.querySelector("input[name='pemohon[jenis_kelamin]']")
+    var agama = document.querySelector("input[name='pemohon[agama]']")
+    var tempat_lahir = document.querySelector("input[name='pemohon[tempat_lahir]']")
+    var tanggal_lahir = document.querySelector("input[name='pemohon[tanggal_lahir]']")
+    var pekerjaan = document.querySelector("input[name='pemohon[pekerjaan]']")
+    var status = document.querySelector("input[name='pemohon[status]']")
 
     nama_lengkap.value = user_pemohon.nama_lengkap
-    hubungan_keluarga.value = user_pemohon.hubungan_keluarga
     alamat.value = user_pemohon.alamat
     dusun.value = user_pemohon.dusun
     desa.value = user_pemohon.desa
     kecamatan.value = user_pemohon.kecamatan
     kode_pos.value = user_pemohon.kode_pos
     no_hp.value = user_pemohon.no_hp
+    email.value = user_pemohon.email
+    NIK.value = user_pemohon.NIK
+    jenis_kelamin.value = user_pemohon.jenis_kelamin
+    agama.value = user_pemohon.agama
+    tempat_lahir.value = user_pemohon.tempat_lahir
+    tanggal_lahir.value = user_pemohon.tanggal_lahir
+    pekerjaan.value = user_pemohon.pekerjaan
+    status.value = user_pemohon.status
 }
 
 </script>
