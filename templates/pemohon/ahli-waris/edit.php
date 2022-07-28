@@ -133,23 +133,48 @@
                             <div class="card-body">
                                 <h4>Berkas Persyaratan</h4>
                                 <div class="form-group">
-                                    <label for="">Surat Pernyataan Ahli Waris</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Pernyataan Ahli Waris</label>
+                                        <?php if($spaw): ?>
+                                            <a href="<?=routeTo($spaw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_pernyataan_ahli_waris" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Surat Kuasa Ahli Waris</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Kuasa Ahli Waris</label>
+                                        <?php if($skaw): ?>
+                                            <a href="<?=routeTo($skaw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_kuasa_ahli_waris" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Surat Kematian dari Desa</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Kematian dari Desa</label>
+                                        <?php if($skdd): ?>
+                                            <a href="<?=routeTo($skdd->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_kematian_dari_desa" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KK Pewaris</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KK Pewaris</label>
+                                        <?php if($kkp): ?>
+                                            <a href="<?=routeTo($kkp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="kk_pewaris" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KTP Ahli Waris</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KTP Ahli Waris</label>
+                                        <?php if($ktpaw): ?>
+                                            <a href="<?=routeTo($ktpaw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="ktp_ahli_waris" class="form-control">
                                 </div>
                             </div>

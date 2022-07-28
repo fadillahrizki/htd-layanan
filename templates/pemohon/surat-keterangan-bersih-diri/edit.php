@@ -151,15 +151,30 @@
                             <div class="card-body">
                                 <h4>Berkas Persyaratan</h4>
                                <div class="form-group">
-                                    <label for="">KTP</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KTP</label>
+                                        <?php if($ktp): ?>
+                                            <a href="<?=routeTo($ktp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="KTP" class="form-control">
                                 </div>
                                <div class="form-group">
-                                    <label for="">KK</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KK</label>
+                                        <?php if($kk): ?>
+                                            <a href="<?=routeTo($kk->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="KK" class="form-control">
                                 </div>
                                <div class="form-group">
-                                    <label for="">Surat Pengantar dari Desa</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Pengantar dari Desa</label>
+                                        <?php if($spdd): ?>
+                                            <a href="<?=routeTo($spdd->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_pengantar_dari_desa" class="form-control">
                                 </div>
                             </div>

@@ -15,15 +15,29 @@ $pemohon = $db->single('pemohon',[
     'id' => $data->pemohon_id
 ]);
 
-$spdd = $db->single('berkas',[
-    'pemohon_id' => $data->pemohon_id,
-    'tipe'=>'SURAT PENGANTAR DARI DESA'
-]);
-
 $user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 
+$ktp = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KTP'
+]);
+
+$kk = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KK'
+]);
+
+$sp = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'SURAT PERSYARATAN'
+]);
+
+$spdd = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'SURAT PENGANTAR DARI DESA'
+]);
 
 if(request() == 'POST')
 {
@@ -42,11 +56,6 @@ if(request() == 'POST')
 
     if($_FILES['KTP']['size'] > 0){
 
-        $ktp_db = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KTP'
-        ]);
-
         $KTP = $_FILES['KTP'];
         $target_file_ktp = $target_dir . time() . "-KTP-" . basename($KTP["name"]);
         move_uploaded_file($KTP["tmp_name"], $target_file_ktp);
@@ -54,16 +63,11 @@ if(request() == 'POST')
         $_POST['KTP']['nama_file'] = $target_file_ktp;
 
         $db->update('berkas',$_POST['KTP'],[
-            'id'=>$ktp_db->id
+            'id'=>$ktp->id
         ]);
     }
 
     if($_FILES['KK']['size'] > 0){
-
-        $kk_db = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KK'
-        ]);
 
         $KK = $_FILES['KK'];
         $target_file_KK = $target_dir . time() . "-KK-" . basename($KK["name"]);
@@ -72,16 +76,11 @@ if(request() == 'POST')
         $_POST['KK']['nama_file'] = $target_file_KK;
 
         $db->update('berkas',$_POST['KK'],[
-            'id'=>$kk_db->id
+            'id'=>$kk->id
         ]);
     }
 
     if($_FILES['surat_persyaratan']['size'] > 0){
-
-        $sp_db = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT PERSYARATAN'
-        ]);
 
         $surat_persyaratan = $_FILES['surat_persyaratan'];
         $target_file_surat_persyaratan = $target_dir . time() . "-SP-" . basename($surat_persyaratan["name"]);
@@ -90,16 +89,11 @@ if(request() == 'POST')
         $_POST['SURAT PERSYARATAN']['nama_file'] = $target_file_surat_persyaratan;
 
         $db->update('berkas',$_POST['SURAT PERSYARATAN'],[
-            'id'=>$sp_db->id
+            'id'=>$sp->id
         ]);
     }
     
     if($_FILES['surat_pengantar_dari_desa']['size'] > 0){
-
-        $spdd_db = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT PENGANTAR DARI DESA'
-        ]);
 
         $surat_pengantar_dari_desa = $_FILES['surat_pengantar_dari_desa'];
         $target_file_surat_pengantar_dari_desa = $target_dir . time() . "-SP-" . basename($surat_pengantar_dari_desa["name"]);
@@ -108,7 +102,7 @@ if(request() == 'POST')
         $_POST['SURAT PENGANTAR DARI DESA']['nama_file'] = $target_file_surat_pengantar_dari_desa;
 
         $db->update('berkas',$_POST['SURAT PENGANTAR DARI DESA'],[
-            'id'=>$spdd_db->id
+            'id'=>$spdd->id
         ]);
     }
 
@@ -125,5 +119,9 @@ return [
     'pemohon' => $pemohon,
     'error_msg' => $error_msg,
     'old' => $old,
-    'table' => $table
+    'table' => $table,
+    'ktp' => $ktp,
+    'kk' => $kk,
+    'sp' => $sp,
+    'spdd' => $spdd,
 ];

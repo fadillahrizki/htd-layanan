@@ -23,6 +23,31 @@ $user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 
+$spaw = $db->single('berkas',[
+    'pemohon_id'=>$pemohon->id,
+    'tipe'=>"SURAT PERNYATAAN AHLI WARIS"
+]);
+
+$skaw = $db->single('berkas',[
+    'pemohon_id'=>$pemohon->id,
+    'tipe'=>"SURAT KUASA AHLI WARIS"
+]);
+
+$skdd = $db->single('berkas',[
+    'pemohon_id'=>$pemohon->id,
+    'tipe'=>"SURAT KEMATIAN DARI DESA"
+]);
+
+$kkp = $db->single('berkas',[
+    'pemohon_id'=>$pemohon->id,
+    'tipe'=>"KK PEWARIS"
+]);
+
+$ktpaw = $db->single('berkas',[
+    'pemohon_id'=>$pemohon->id,
+    'tipe'=>"KTP AHLI WARIS"
+]);
+
 if(request() == 'POST')
 {
     if(file_exists('../actions/'.$table.'/before-edit.php'))
@@ -44,11 +69,6 @@ if(request() == 'POST')
 
     if($_FILES['surat_pernyataan_ahli_waris']['size'] > 0){
 
-        $spaw = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT PERNYATAAN AHLI WARIS'
-        ]);
-
         $surat_pernyataan_ahli_waris = $_FILES['surat_pernyataan_ahli_waris'];
         $target_file_surat_pernyataan_ahli_waris = $target_dir . time() . "-SPAW-" . basename($surat_pernyataan_ahli_waris["name"]);
         move_uploaded_file($surat_pernyataan_ahli_waris["tmp_name"], $target_file_surat_pernyataan_ahli_waris);
@@ -61,11 +81,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['surat_kuasa_ahli_waris']['size'] > 0){
-
-        $skaw = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT KUASA AHLI WARIS'
-        ]);
 
         $surat_kuasa_ahli_waris = $_FILES['surat_kuasa_ahli_waris'];
         $target_file_surat_kuasa_ahli_waris = $target_dir . time() . "-SKAW-" . basename($surat_kuasa_ahli_waris["name"]);
@@ -80,11 +95,6 @@ if(request() == 'POST')
 
     if($_FILES['surat_kematian_dari_desa']['size'] > 0){
 
-        $skdd = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT KEMATIAN DARI DESA'
-        ]);
-
         $surat_kematian_dari_desa = $_FILES['surat_kematian_dari_desa'];
         $target_file_surat_kematian_dari_desa = $target_dir . time() . "-SKDD-" . basename($surat_kematian_dari_desa["name"]);
         move_uploaded_file($surat_kematian_dari_desa["tmp_name"], $target_file_surat_kematian_dari_desa);
@@ -98,11 +108,6 @@ if(request() == 'POST')
 
     if($_FILES['kk_pewaris']['size'] > 0){
 
-        $kkp = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KK PEWARIS'
-        ]);
-
         $kk_pewaris = $_FILES['kk_pewaris'];
         $target_file_kk_pewaris = $target_dir . time() . "-KKP-" . basename($kk_pewaris["name"]);
         move_uploaded_file($kk_pewaris["tmp_name"], $target_file_kk_pewaris);
@@ -115,11 +120,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['ktp_ahli_waris']['size'] > 0){
-
-        $ktpaw = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KTP AHLI WARIS'
-        ]);
 
         $ktp_ahli_waris = $_FILES['ktp_ahli_waris'];
         $target_file_ktp_ahli_waris = $target_dir . time() . "-KTPAW-" . basename($ktp_ahli_waris["name"]);
@@ -146,5 +146,10 @@ return [
     'pewaris' => $pewaris,
     'error_msg' => $error_msg,
     'old' => $old,
-    'table' => $table
+    'table' => $table,
+    'skaw' => $skaw,
+    'spaw' => $spaw,
+    'skdd' => $skdd,
+    'kkp' => $kkp,
+    'ktpaw' => $ktpaw,
 ];

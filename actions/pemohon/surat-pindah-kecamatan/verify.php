@@ -7,7 +7,7 @@ $db   = new Database($conn);
 if(file_exists('../actions/'.$table.'/before-delete.php'))
     require '../actions/'.$table.'/before-delete.php';
 
-$db->update($table,['status'=>'terverifikasi'],[
+$db->update($table,['status'=>'Sudah Diverifikasi'],[
     'id' => $_GET['id']
 ]);
 

@@ -68,9 +68,13 @@
                                             <td><?=$data->status?></td>
                                             <td>
                                                 <?php if($data->status == "pengajuan"):?>
-                                                <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/verify',['id'=>$data->id])?>" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Verifikasi</a>
+                                                <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/verify',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Verifikasi</a>
                                                 <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/edit',['id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> Lihat</a>
                                                 <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/delete',['id'=>$data->id])?>" onclick="if(confirm('apakah anda yakin akan menghapus data ini ?')){return true}else{return false}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                <?php elseif($data->status == "Sudah Diverifikasi"):?>
+                                                    <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/accept',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Setuju</a>
+                                                <?php elseif($data->status == "Disetujui"):?>
+                                                    <a href="<?=routeTo('pemohon/surat-pindah-kecamatan/finish',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Selesai</a>
                                                 <?php endif ?>
                                             </td>
                                         </tr>

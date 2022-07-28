@@ -51,6 +51,56 @@ $user_pemohon = $db->single('profile',[
     'user_id'=>auth()->user->id
 ]);
 
+$spdd = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'SURAT PENGANTAR DARI DESA'
+]);
+
+$kkmp = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KK MEMPELAI PRIA'
+]);
+
+$KTPMP = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KTP MEMPELAI PRIA'
+]);
+
+$PFMP = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'PAS FOTO MEMPELAI PRIA'
+]);
+
+$KKMW = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KK MEMPELAI WANITA'
+]);
+
+$KTPMW = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'KTP MEMPELAI WANITA'
+]);
+
+$PFMW = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'PAS FOTO MEMPELAI WANITA'
+]);
+
+$SPBM = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'SURAT PERNYATAAN BELUM MENIKAH'
+]);
+
+$ACSI = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'AKTE CERAI SUAMI ISTRI'
+]);
+
+$SKSI = $db->single('berkas',[
+    'pemohon_id' => $data->pemohon_id,
+    'tipe'=>'SURAT KEMATIAN SUAMI ISTRI'
+]);
+
 
 if(request() == 'POST')
 {
@@ -115,11 +165,6 @@ if(request() == 'POST')
 
     if($_FILES['surat_pengantar_dari_desa']['size'] > 0){
 
-        $spdd = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT PENGANTAR DARI DESA'
-        ]);
-
         $surat_pengantar_dari_desa = $_FILES['surat_pengantar_dari_desa'];
         $target_file_surat_pengantar_dari_desa = $target_dir . time() . "-SPDD-" . basename($surat_pengantar_dari_desa["name"]);
         move_uploaded_file($surat_pengantar_dari_desa["tmp_name"], $target_file_surat_pengantar_dari_desa);
@@ -132,11 +177,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['kk_mempelai_pria']['size'] > 0){
-
-        $kkmp = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KK MEMPELAI PRIA'
-        ]);
 
         $kk_mempelai_pria = $_FILES['kk_mempelai_pria'];
         $target_file_kk_mempelai_pria = $target_dir . time() . "-KKMP-" . basename($kk_mempelai_pria["name"]);
@@ -151,11 +191,6 @@ if(request() == 'POST')
 
     if($_FILES['ktp_mempelai_pria']['size'] > 0){
 
-        $KTPMP = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KTP MEMPELAI PRIA'
-        ]);
-
         $ktp_mempelai_pria = $_FILES['ktp_mempelai_pria'];
         $target_file_ktp_mempelai_pria = $target_dir . time() . "-KTPMP-" . basename($ktp_mempelai_pria["name"]);
         move_uploaded_file($ktp_mempelai_pria["tmp_name"], $target_file_ktp_mempelai_pria);
@@ -168,11 +203,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['pas_foto_mempelai_pria']['size'] > 0){
-
-        $PFMP = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'PAS FOTO MEMPELAI PRIA'
-        ]);
 
         $pas_foto_mempelai_pria = $_FILES['pas_foto_mempelai_pria'];
         $target_file_pas_foto_mempelai_pria = $target_dir . time() . "-PFMP-" . basename($pas_foto_mempelai_pria["name"]);
@@ -189,11 +219,6 @@ if(request() == 'POST')
 
     if($_FILES['kk_mempelai_wanita']['size'] > 0){
 
-        $KKMW = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KK MEMPELAI WANITA'
-        ]);
-
         $kk_mempelai_WANITA = $_FILES['kk_mempelai_wanita'];
         $target_file_kk_mempelai_WANITA = $target_dir . time() . "-KKMW-" . basename($kk_mempelai_WANITA["name"]);
         move_uploaded_file($kk_mempelai_WANITA["tmp_name"], $target_file_kk_mempelai_WANITA);
@@ -206,11 +231,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['ktp_mempelai_wanita']['size'] > 0){
-
-        $KTPMW = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'KTP MEMPELAI WANITA'
-        ]);
 
         $ktp_mempelai_WANITA = $_FILES['ktp_mempelai_wanita'];
         $target_file_ktp_mempelai_WANITA = $target_dir . time() . "-KTPMW-" . basename($ktp_mempelai_WANITA["name"]);
@@ -225,11 +245,6 @@ if(request() == 'POST')
 
     if($_FILES['pas_foto_mempelai_wanita']['size'] > 0){
 
-        $PFMW = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'PAS FOTO MEMPELAI WANITA'
-        ]);
-
         $pas_foto_mempelai_WANITA = $_FILES['pas_foto_mempelai_wanita'];
         $target_file_pas_foto_mempelai_WANITA = $target_dir . time() . "-PFMW-" . basename($pas_foto_mempelai_WANITA["name"]);
         move_uploaded_file($pas_foto_mempelai_WANITA["tmp_name"], $target_file_pas_foto_mempelai_WANITA);
@@ -242,11 +257,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['surat_pernyataan_belum_menikah']['size'] > 0){
-
-        $SPBM = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT PERNYATAAN BELUM MENIKAH'
-        ]);
 
         $surat_pernyataan_belum_menikah = $_FILES['surat_pernyataan_belum_menikah'];
         $target_file_surat_pernyataan_belum_menikah = $target_dir . time() . "-SPBM-" . basename($surat_pernyataan_belum_menikah["name"]);
@@ -261,11 +271,6 @@ if(request() == 'POST')
 
     if($_FILES['akte_cerai_suami_istri']['size'] > 0){
 
-        $ACSI = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'AKTE CERAI SUAMI ISTRI'
-        ]);
-
         $akte_cerai_suami_istri = $_FILES['akte_cerai_suami_istri'];
         $target_file_akte_cerai_suami_istri = $target_dir . time() . "-ACSI-" . basename($akte_cerai_suami_istri["name"]);
         move_uploaded_file($akte_cerai_suami_istri["tmp_name"], $target_file_akte_cerai_suami_istri);
@@ -278,11 +283,6 @@ if(request() == 'POST')
     }
 
     if($_FILES['surat_kematian_suami_istri']['size'] > 0){
-
-        $SKSI = $db->single('berkas',[
-            'pemohon_id' => $data->pemohon_id,
-            'tipe'=>'SURAT KEMATIAN SUAMI ISTRI'
-        ]);
 
         $surat_kematian_suami_istri = $_FILES['surat_kematian_suami_istri'];
         $target_file_surat_kematian_suami_istri = $target_dir . time() . "-SKSI-" . basename($surat_kematian_suami_istri["name"]);
@@ -316,5 +316,15 @@ return [
     'pemohon' => $pemohon,
     'error_msg' => $error_msg,
     'old' => $old,
-    'table' => $table
+    'table' => $table,
+    'spdd' => $spdd,
+    'kkmp' => $kkmp,
+    'ktpmp' => $KTPMP,
+    'pfmp' => $PFMP,
+    'kkmw' => $KKMW,
+    'ktpmw' => $KTPMW,
+    'pfmw' => $PFMW,
+    'spbm' => $SPBM,
+    'acsi' => $ACSI,
+    'sksi' => $SKSI,
 ];

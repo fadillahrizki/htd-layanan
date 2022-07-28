@@ -319,43 +319,93 @@
                             <div class="card-body">
                                 <h4>Berkas Persyaratan</h4>
                                 <div class="form-group">
-                                    <label for="">Surat Pengantar dari Desa</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Pengantar dari Desa</label>
+                                        <?php if($spdd): ?>
+                                            <a href="<?=routeTo($spdd->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_pengantar_dari_desa" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KK Mempelai Pria</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KK Mempelai Pria</label>
+                                        <?php if($kkmp): ?>
+                                            <a href="<?=routeTo($kkmp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="kk_mempelai_pria" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KTP Mempelai Pria</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KTP Mempelai Pria</label>
+                                        <?php if($ktpmp): ?>
+                                            <a href="<?=routeTo($ktpmp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="ktp_mempelai_pria" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Pas Foto Mempelai Pria</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Pas Foto Mempelai Pria</label>
+                                        <?php if($pfmp): ?>
+                                            <a href="<?=routeTo($pfmp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="pas_foto_mempelai_pria" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KK Mempelai Wanita</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KK Mempelai Wanita</label>
+                                        <?php if($kkmw): ?>
+                                            <a href="<?=routeTo($kkmw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="kk_mempelai_wanita" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">KTP Mempelai Wanita</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">KTP Mempelai Wanita</label>
+                                        <?php if($ktpmw): ?>
+                                            <a href="<?=routeTo($ktpmw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="ktp_mempelai_wanita" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Pas Foto Mempelai Wanita</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Pas Foto Mempelai Wanita</label>
+                                        <?php if($pfmw): ?>
+                                            <a href="<?=routeTo($pfmw->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="pas_foto_mempelai_wanita" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Surat Pernyataan Belum Menikah</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Pernyataan Belum Menikah</label>
+                                        <?php if($spbm): ?>
+                                            <a href="<?=routeTo($spbm->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_pernyataan_belum_menikah" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Akte Cerai Suami / Istri</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Akte Cerai Suami / Istri</label>
+                                        <?php if($acsi): ?>
+                                            <a href="<?=routeTo($acsi->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="akte_cerai_suami_istri" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Surat Kematian Suami / Istri</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="">Surat Kematian Suami / Istri</label>
+                                        <?php if($sksi): ?>
+                                            <a href="<?=routeTo($sksi->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
+                                        <?php endif?>
+                                    </div>
                                     <input type="file" name="surat_kematian_suami_istri" class="form-control">
                                 </div>
                             </div>
