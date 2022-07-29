@@ -17,13 +17,18 @@ if($role->name == "pemohon"){
     $db->query = "select id from pemohon where user_id=$user->id";
     $pemohon = $db->exec('all');
 
-    $ids = [];
-    foreach($pemohon as $p){
-        $ids[] = $p->id;
+    $data = [];
+
+    if($pemohon)
+    {
+        $ids = [];
+        foreach($pemohon as $p){
+            $ids[] = $p->id;
+        }
+        
+        $db->query = "select * from $table where pemohon_id in (". implode(',', $ids) .")";
+        $data = $db->exec('all');
     }
-    
-    $db->query = "select * from $table where pemohon_id in (". implode(',', $ids) .")";
-    $data = $db->exec('all');
 }else{
     $data = $db->all($table);
 }
