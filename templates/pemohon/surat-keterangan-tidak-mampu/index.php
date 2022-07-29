@@ -68,12 +68,15 @@
                                             <td><?=$data->status?></td>
                                             <td>
                                                 <?php if($data->status == "pengajuan"):?>
+                                                    <?php if(get_role(auth()->user->id)->name != 'pemohon'): ?>
                                                 <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/verify',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Verifikasi</a>
+                                                <?php else: ?>
                                                 <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/edit',['id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> Lihat</a>
                                                 <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/delete',['id'=>$data->id])?>" onclick="if(confirm('apakah anda yakin akan menghapus data ini ?')){return true}else{return false}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
-                                                <?php elseif($data->status == "Sudah Diverifikasi"):?>
+                                                <?php endif ?>
+                                                <?php elseif($data->status == "Sudah Diverifikasi" && get_role(auth()->user->id)->name != 'pemohon'):?>
                                                     <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/accept',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Setuju</a>
-                                                <?php elseif($data->status == "Disetujui"):?>
+                                                <?php elseif($data->status == "Disetujui" && get_role(auth()->user->id)->name != 'pemohon'):?>
                                                     <a href="<?=routeTo('pemohon/surat-keterangan-tidak-mampu/finish',['id'=>$data->id])?>" class="btn btn-sm btn-success" onclick="return confirm('Apa anda yakin ?')"><i class="fas fa-check"></i> Selesai</a>
                                                 <?php endif ?>
                                             </td>
