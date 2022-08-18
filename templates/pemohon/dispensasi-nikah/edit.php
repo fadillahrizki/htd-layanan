@@ -43,7 +43,7 @@
                                     $type  = $field_data['type'];
                                 }
                                 $label = _ucwords($label);
-                                if($label == "User" || $label == "Nama Layanan"){
+                                if($label == "User" || $label == "Nama Layanan" || $label == "Hubungan Keluarga"){
                                     continue;
                                 }
                             ?>

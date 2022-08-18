@@ -43,7 +43,7 @@
                                     $type  = $field_data['type'];
                                 }
                                 $label = _ucwords($label);
-                                if($label == "User" || $label == "Nama Layanan" || $label == "Tanggal Pernikahan" || $label == "Saksi 1" || $label == "Saksi 2"){
+                                if($label == "User" || $label == "Nama Layanan" || $label == "Hubungan Keluarga" || $label == "Tanggal Pernikahan" || $label == "Saksi 1" || $label == "Saksi 2"){
                                     continue;
                                 }
                             ?>
