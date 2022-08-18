@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Daftar</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="<?= routeTo('assets/img/main-logo.gif')?>" type="image/x-icon"/>
+	<link rel="icon" href="<?= routeTo('assets/img/main-logo.jpeg')?>" type="image/x-icon"/>
 
 	<!-- Fonts and icons -->
 	<script src="<?=routeTo('assets/js/plugin/webfont/webfont.min.js')?>"></script>
@@ -36,7 +36,7 @@
                 <div class="card full-height">
                     <div class="card-body">
                         <center>
-                            <img src="<?=routeTo('assets/img/main-logo.gif')?>" width="150px" height="100px" alt="logo" style="object-fit:contain;">
+                            <img src="<?=routeTo('assets/img/main-logo.jpeg')?>" width="150px" height="100px" alt="logo" style="object-fit:contain;">
                         </center>
                         <div class="card-title text-center">Register Form</div>
                         <div class="card-category text-center">Masukkan data di bawah ini.</div>
