@@ -130,9 +130,7 @@
             </div>
 
             <p align="center">
-                Kontak Person<br>
-                <a href="tel:081225821664">0812 2582 1664</a><br>
-                <a href="tel:081362268191">0813 6226 8191</a><br>
+                Kontak Person : <a href="tel:081225821664">0812 2582 1664</a> - <a href="tel:081362268191">0813 6226 8191</a>
             </p>
         </div>
     </div>
