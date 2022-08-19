@@ -128,6 +128,12 @@
                     </div>
                 </div>
             </div>
+
+            <p align="center">
+                Kontak Person<br>
+                <a href="tel:081225821664">0812 2582 1664</a><br>
+                <a href="tel:081362268191">0813 6226 8191</a><br>
+            </p>
         </div>
     </div>
 <?php load_templates('layouts/bottom') ?>
