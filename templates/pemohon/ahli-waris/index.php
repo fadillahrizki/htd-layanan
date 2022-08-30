@@ -67,7 +67,7 @@
                                             <?php endforeach ?>
                                             <td><?=$data->status?></td>
                                             <td>
-                                                <?php if($data->status == "pengajuan" || get_role(auth()->user->id)->name != 'pemohon'): ?>
+                                                <?php if((get_role(auth()->user->id)->name == 'pemohon' && $data->status == "pengajuan") || get_role(auth()->user->id)->name == 'administrator'): ?>
                                                 <a href="<?=routeTo('pemohon/ahli-waris/edit',['id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> Lihat</a>
                                                 <?php endif ?>
                                                 <?php if($data->status == "pengajuan"):?>
