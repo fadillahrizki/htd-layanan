@@ -111,7 +111,7 @@
                                 </div>
                                <div class="form-group">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <label for="">Surat Persyaratan</label>
+                                        <label for="">Surat Pernyataan</label>
                                         <?php if($sp): ?>
                                             <a href="<?=routeTo($sp->nama_file)?>" target="_blank" class="btn btn-primary btn-sm">Lihat</a>
                                         <?php endif?>
