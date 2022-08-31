@@ -99,7 +99,7 @@
                                     <input type="file" name="KK" class="form-control" required>
                                 </div>
                                <div class="form-group">
-                                    <label for="">Surat Persyaratan</label>
+                                    <label for="">Surat Pernyataan</label>
                                     <input type="file" name="surat_persyaratan" class="form-control" required>
                                 </div>
                                <div class="form-group">
